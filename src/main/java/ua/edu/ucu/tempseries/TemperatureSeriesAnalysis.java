@@ -5,17 +5,20 @@ import java.util.InputMismatchException;
 public class TemperatureSeriesAnalysis {
     private double[] temperatures;
     private int size;
+    private static double MIN_TEMP = -273.0;
+    private static int DEFAULT_SIZE = 16;
 
     public TemperatureSeriesAnalysis() {
-        temperatures = new double[16];
+        temperatures = new double[DEFAULT_SIZE];
     }
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
         int i = 0;
         temperatures = new double[temperatureSeries.length];
 
+
         for (double temp : temperatureSeries) {
-            if (temp < -273) {
+            if (temp < MIN_TEMP) {
                 throw new InputMismatchException("Wrong temperature value!");
             } else {
                 temperatures[i] = temp;
@@ -102,7 +105,8 @@ public class TemperatureSeriesAnalysis {
         for (double temp : temperatures) {
             if (Math.abs(temp) < Math.abs(closeToZero)) {
                 closeToZero = temp;
-            } else if ((Math.abs(temp) == Math.abs(closeToZero)) && (temp > closeToZero)){
+            } else if ((Math.abs(temp) == Math.abs(closeToZero))
+                    && (temp > closeToZero)) {
                 closeToZero = temp;
             }
         }
@@ -118,9 +122,11 @@ public class TemperatureSeriesAnalysis {
         double closeToZero = temperatures[0];
 
         for (double temp : temperatures) {
-            if (Math.abs(temp - tempValue) < Math.abs(closeToZero - tempValue)) {
+            if (Math.abs(temp - tempValue) < Math.abs(closeToZero
+                    - tempValue)) {
                 closeToZero = temp;
-            } else if ((Math.abs(temp - tempValue) == Math.abs(closeToZero - tempValue)) && (temp > closeToZero)){
+            } else if ((Math.abs(temp - tempValue) == Math.abs(closeToZero
+                    - tempValue)) && (temp > closeToZero)) {
                 closeToZero = temp;
             }
         }
@@ -227,7 +233,8 @@ public class TemperatureSeriesAnalysis {
                 }
             } else {
                 double[] new_temp = new double[newLen];
-                System.arraycopy(this.temperatures, 0, new_temp, 0, temperatures.length);
+                System.arraycopy(this.temperatures, 0, new_temp
+                        , 0, temperatures.length);
                 temperatures = new_temp;
                 size += tempsLen;
             }
