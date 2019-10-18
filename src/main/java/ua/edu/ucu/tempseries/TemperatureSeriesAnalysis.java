@@ -208,7 +208,7 @@ public class TemperatureSeriesAnalysis {
                 i++;
             }
 
-            size = 3;
+            size = temps_len;
         } else {
             int newLen = temperatures.length;
 
@@ -233,6 +233,9 @@ public class TemperatureSeriesAnalysis {
             }
         }
 
+        for (double temp : temperatures) {
+            System.out.println(size);
+        }
         return size;
     }
 }
