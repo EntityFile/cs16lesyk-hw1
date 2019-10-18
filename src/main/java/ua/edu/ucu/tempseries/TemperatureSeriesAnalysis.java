@@ -48,13 +48,13 @@ public class TemperatureSeriesAnalysis {
         }
 
         double average = average();
+
         double avrsum = 0;
         double dev;
 
         for (int i = 0; i < size; i++) {
             avrsum += (temperatures[i] - average)*(temperatures[i] - average);
         }
-
         dev = Math.sqrt(avrsum/size);
 
         return dev;
