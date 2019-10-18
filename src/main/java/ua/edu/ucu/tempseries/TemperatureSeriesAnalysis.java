@@ -210,7 +210,7 @@ public class TemperatureSeriesAnalysis {
             int i = 0;
 
             for (double temp : temps) {
-                temperatures[0] = temp;
+                temperatures[i] = temp;
                 i++;
             }
 
@@ -239,10 +239,7 @@ public class TemperatureSeriesAnalysis {
                 size += tempsLen;
             }
         }
-
-        for (double temp : temperatures) {
-            System.out.println(size);
-        }
+        
         return size;
     }
 }
