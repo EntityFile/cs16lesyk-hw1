@@ -5,8 +5,8 @@ import java.util.InputMismatchException;
 public class TemperatureSeriesAnalysis {
     private double[] temperatures;
     private int size;
-    private static double MIN_TEMP = -273.0;
-    private static int DEFAULT_SIZE = 16;
+    private static final double MIN_TEMP = -273.0;
+    private static final int DEFAULT_SIZE = 16;
 
     public TemperatureSeriesAnalysis() {
         temperatures = new double[DEFAULT_SIZE];
@@ -105,8 +105,8 @@ public class TemperatureSeriesAnalysis {
         for (double temp : temperatures) {
             if (Math.abs(temp) < Math.abs(closeToZero)) {
                 closeToZero = temp;
-            } else if ((Math.abs(temp) == Math.abs(closeToZero))
-                    && (temp > closeToZero)) {
+            } else if (Math.abs(temp) == Math.abs(closeToZero)
+                    && temp > closeToZero) {
                 closeToZero = temp;
             }
         }
@@ -125,8 +125,8 @@ public class TemperatureSeriesAnalysis {
             if (Math.abs(temp - tempValue) < Math.abs(closeToZero
                     - tempValue)) {
                 closeToZero = temp;
-            } else if ((Math.abs(temp - tempValue) == Math.abs(closeToZero
-                    - tempValue)) && (temp > closeToZero)) {
+            } else if (Math.abs(temp - tempValue) == Math.abs(closeToZero
+                    - tempValue) && temp > closeToZero) {
                 closeToZero = temp;
             }
         }
@@ -239,7 +239,7 @@ public class TemperatureSeriesAnalysis {
                 size += tempsLen;
             }
         }
-        
+
         return size;
     }
 }
