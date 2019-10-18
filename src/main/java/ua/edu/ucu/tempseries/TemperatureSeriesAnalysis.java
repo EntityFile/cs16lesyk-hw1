@@ -97,17 +97,17 @@ public class TemperatureSeriesAnalysis {
             throw new IllegalArgumentException("Temperatures array is empty!");
         }
 
-        double close_to_zero = temperatures[0];
+        double closeToZero = temperatures[0];
 
         for (double temp : temperatures) {
-            if (Math.abs(temp) < Math.abs(close_to_zero)) {
-                close_to_zero = temp;
-            } else if ((Math.abs(temp) == Math.abs(close_to_zero)) && (temp > close_to_zero)){
-                close_to_zero = temp;
+            if (Math.abs(temp) < Math.abs(closeToZero)) {
+                closeToZero = temp;
+            } else if ((Math.abs(temp) == Math.abs(closeToZero)) && (temp > closeToZero)){
+                closeToZero = temp;
             }
         }
 
-        return close_to_zero;
+        return closeToZero;
     }
 
     public double findTempClosestToValue(double tempValue) {
@@ -115,17 +115,17 @@ public class TemperatureSeriesAnalysis {
             throw new IllegalArgumentException("Temperatures array is empty!");
         }
 
-        double close_to_zero = temperatures[0];
+        double closeToZero = temperatures[0];
 
         for (double temp : temperatures) {
-            if (Math.abs(temp - tempValue) < Math.abs(close_to_zero - tempValue)) {
-                close_to_zero = temp;
-            } else if ((Math.abs(temp - tempValue) == Math.abs(close_to_zero - tempValue)) && (temp > close_to_zero)){
-                close_to_zero = temp;
+            if (Math.abs(temp - tempValue) < Math.abs(closeToZero - tempValue)) {
+                closeToZero = temp;
+            } else if ((Math.abs(temp - tempValue) == Math.abs(closeToZero - tempValue)) && (temp > closeToZero)){
+                closeToZero = temp;
             }
         }
 
-        return close_to_zero;
+        return closeToZero;
     }
 
     public double[] findTempsLessThen(double tempValue) {
@@ -141,17 +141,17 @@ public class TemperatureSeriesAnalysis {
             }
         }
 
-        double[] smaller_array = new double[counter];
+        double[] smallerArray = new double[counter];
         int i = 0;
 
         for (double temp : temperatures) {
             if (temp < tempValue) {
-                smaller_array[i] = temp;
+                smallerArray[i] = temp;
                 i++;
             }
         }
 
-        return smaller_array;
+        return smallerArray;
     }
 
     public double[] findTempsGreaterThen(double tempValue) {
@@ -167,17 +167,17 @@ public class TemperatureSeriesAnalysis {
             }
         }
 
-        double[] bigger_array = new double[counter];
+        double[] biggerArray = new double[counter];
         int i = 0;
 
         for (double temp : temperatures) {
             if (temp >= tempValue) {
-                bigger_array[i] = temp;
+                biggerArray[i] = temp;
                 i++;
             }
         }
 
-        return bigger_array;
+        return biggerArray;
     }
 
     public TempSummaryStatistics summaryStatistics() {
@@ -194,13 +194,13 @@ public class TemperatureSeriesAnalysis {
     }
 
     public int addTemps(double... temps) {
-        int temps_len = 0;
+        int tempsLen = 0;
 
         for (double temp : temps) {
-            temps_len++;
+            tempsLen++;
         }
         if (temperatures.length == 0) {
-            temperatures = new double[temps_len];
+            temperatures = new double[tempsLen];
             int i = 0;
 
             for (double temp : temps) {
@@ -208,12 +208,12 @@ public class TemperatureSeriesAnalysis {
                 i++;
             }
 
-            size = temps_len;
+            size = tempsLen;
         } else {
             int newLen = temperatures.length;
 
             while (true) {
-                if (size + temps_len > newLen) {
+                if (size + tempsLen > newLen) {
                     newLen = newLen*2;
                 } else {
                     break;
@@ -229,7 +229,7 @@ public class TemperatureSeriesAnalysis {
                 double[] new_temp = new double[newLen];
                 System.arraycopy(this.temperatures, 0, new_temp, 0, temperatures.length);
                 temperatures = new_temp;
-                size += temps_len;
+                size += tempsLen;
             }
         }
 
